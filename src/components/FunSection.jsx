@@ -1,38 +1,42 @@
-import { Gamepad2, Music, Camera, Coffee, Palette, Zap } from 'lucide-react'
-import Card from "./ui/Card"
-import Badge from "./ui/Badge"
+import { Gamepad2, Music, Camera, Swords, Palette, Zap } from "lucide-react";
+import Card from "./ui/Card";
+import Badge from "./ui/Badge";
 
 function FunSection() {
   const funFacts = [
     {
       icon: Gamepad2,
       title: "게임 취향",
-      content: "RPG와 인디게임을 좋아해요. 특히 스토리가 좋은 게임에 빠져들곤 합니다.",
+      content:
+        "RPG와 인디게임을 좋아해요. 특히 스토리가 좋은 게임에 빠져들곤 합니다.",
       color: "text-blue-500",
       bgColor: "bg-blue-500/10",
     },
     {
       icon: Music,
       title: "음악 취향",
-      content: "Lo-fi, 재즈, 클래식을 들으며 코딩해요. 집중할 때는 빗소리도 함께!",
+      content:
+        "Lo-fi, 재즈, 클래식을 들으며 코딩해요. 집중할 때는 빗소리도 함께!",
       color: "text-purple-500",
       bgColor: "bg-purple-500/10",
     },
     {
       icon: Camera,
       title: "사진 찍기",
-      content: "일상의 소소한 순간들을 담는 걸 좋아해요. 특히 하늘과 카페 사진을 자주 찍어요.",
+      content:
+        "일상의 소소한 순간들을 담는 걸 좋아해요. 특히 하늘과 카페 사진을 자주 찍어요.",
       color: "text-green-500",
       bgColor: "bg-green-500/10",
     },
     {
-      icon: Coffee,
-      title: "카페 탐방",
-      content: "새로운 카페를 찾아다니며 분위기 좋은 곳에서 작업하는 걸 즐겨요.",
+      icon: Swords,
+      title: "에어소프트",
+      content:
+        "에어소프트 총을 수집하고, 커스터마이징하는 걸 좋아해요. 실제 전투는 아니지만, 전술적인 재미가 쏠쏠해요.",
       color: "text-orange-500",
       bgColor: "bg-orange-500/10",
     },
-  ]
+  ];
 
   const tools = [
     { name: "VS Code", emoji: "💻", reason: "확장 프로그램이 너무 좋아요" },
@@ -40,8 +44,12 @@ function FunSection() {
     { name: "Notion", emoji: "📝", reason: "모든 것을 정리하는 만능 도구" },
     { name: "Spotify", emoji: "🎵", reason: "코딩할 때 필수 BGM" },
     { name: "GitHub", emoji: "🐙", reason: "코드의 안전한 보금자리" },
-    { name: "Chrome DevTools", emoji: "🔧", reason: "버그 잡을 때의 든든한 친구" },
-  ]
+    {
+      name: "Chrome DevTools",
+      emoji: "🔧",
+      reason: "버그 잡을 때의 든든한 친구",
+    },
+  ];
 
   const currentlyInto = [
     "🎮 인디게임 '할로우 나이트' 플레이 중",
@@ -50,10 +58,13 @@ function FunSection() {
     "📱 Flutter로 모바일 앱 만들어보기",
     "☕ 집 근처 카페 맛집 탐방",
     "🎨 새로운 디자인 트렌드 찾아보기",
-  ]
+  ];
 
   return (
-    <section id="fun" className="py-20 bg-gradient-to-br from-muted/30 to-background">
+    <section
+      id="fun"
+      className="py-20 bg-gradient-to-br from-muted/30 to-background"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -62,7 +73,9 @@ function FunSection() {
                 개발 외의 이야기
               </span>
             </h2>
-            <p className="text-muted-foreground text-lg">개발자이기 전에 한 명의 사람으로서의 모습들이에요</p>
+            <p className="text-muted-foreground text-lg">
+              개발자이기 전에 한 명의 사람으로서의 모습들이에요
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -78,7 +91,9 @@ function FunSection() {
                     <fact.icon className={`h-8 w-8 ${fact.color}`} />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{fact.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{fact.content}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {fact.content}
+                  </p>
                 </div>
               </Card>
             ))}
@@ -99,7 +114,9 @@ function FunSection() {
                     <span className="text-2xl">{tool.emoji}</span>
                     <div className="flex-1">
                       <h4 className="font-semibold">{tool.name}</h4>
-                      <p className="text-xs text-muted-foreground">{tool.reason}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {tool.reason}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -129,7 +146,7 @@ function FunSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default FunSection
+export default FunSection;

@@ -1,12 +1,19 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Mail, Phone, MapPin, Send, MessageCircle, Calendar } from "lucide-react"
-import Card from "./ui/Card"
-import Button from "./ui/Button"
-import Input from "./ui/Input"
-import Textarea from "./ui/Textarea"
-import Label from "./ui/Label"
+import { useState } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageCircle,
+  Calendar,
+} from "lucide-react";
+import Card from "./ui/Card";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
+import Textarea from "./ui/Textarea";
+import Label from "./ui/Label";
 
 function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,33 +21,35 @@ function ContactSection() {
     email: "",
     subject: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    console.log("Form submitted:", formData)
-    alert("메시지가 성공적으로 전송되었습니다! 빠른 시일 내에 답변드리겠습니다.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
-    setIsSubmitting(false)
-  }
+    console.log("Form submitted:", formData);
+    alert(
+      "메시지가 성공적으로 전송되었습니다! 빠른 시일 내에 답변드리겠습니다."
+    );
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(false);
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const contactMethods = [
     {
       icon: Mail,
       title: "이메일",
-      value: "kim.developer@email.com",
+      value: "bcspeirs@icloud.com",
       description: "언제든지 연락주세요",
       color: "text-blue-500",
       bgColor: "bg-blue-500/10",
@@ -48,20 +57,20 @@ function ContactSection() {
     {
       icon: Phone,
       title: "전화",
-      value: "+82 10-1234-5678",
-      description: "평일 9시-18시",
+      value: "+82 10-2328-5750",
+      description: "평일 24시",
       color: "text-green-500",
       bgColor: "bg-green-500/10",
     },
     {
       icon: MapPin,
       title: "위치",
-      value: "서울, 대한민국",
+      value: "관악구, 서울, 대한민국",
       description: "대면 미팅 가능",
       color: "text-purple-500",
       bgColor: "bg-purple-500/10",
     },
-  ]
+  ];
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
@@ -76,7 +85,8 @@ function ContactSection() {
               </span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              새로운 프로젝트나 협업 기회에 대해 이야기해보세요. 함께 멋진 것을 만들어봅시다!
+              새로운 프로젝트나 협업 기회에 대해 이야기해보세요. 함께 멋진 것을
+              만들어봅시다!
             </p>
           </div>
 
@@ -93,8 +103,12 @@ function ContactSection() {
                     <method.icon className={`h-8 w-8 ${method.color}`} />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{method.title}</h3>
-                  <p className="text-foreground font-medium mb-1">{method.value}</p>
-                  <p className="text-sm text-muted-foreground">{method.description}</p>
+                  <p className="text-foreground font-medium mb-1">
+                    {method.value}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {method.description}
+                  </p>
                 </div>
               </Card>
             ))}
@@ -108,8 +122,9 @@ function ContactSection() {
                   연락해 주세요!
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  새로운 프로젝트, 협업 제안, 또는 단순한 인사말이라도 환영합니다. 보통 24시간 이내에 답변드리며, 모든
-                  메시지를 소중히 읽어보겠습니다.
+                  새로운 프로젝트, 협업 제안, 또는 단순한 인사말이라도
+                  환영합니다. 보통 24시간 이내에 답변드리며, 모든 메시지를
+                  소중히 읽어보겠습니다.
                 </p>
               </div>
 
@@ -118,7 +133,9 @@ function ContactSection() {
                   <Calendar className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">빠른 응답</p>
-                    <p className="text-sm text-muted-foreground">평균 응답 시간: 2-4시간</p>
+                    <p className="text-sm text-muted-foreground">
+                      평균 응답 시간: 2-4시간
+                    </p>
                   </div>
                 </div>
               </div>
@@ -209,7 +226,7 @@ function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default ContactSection
+export default ContactSection;

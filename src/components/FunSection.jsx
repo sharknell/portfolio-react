@@ -8,7 +8,7 @@ function FunSection() {
       icon: Gamepad2,
       title: "게임 취향",
       content:
-        "RPG와 인디게임을 좋아해요. 특히 스토리가 좋은 게임에 빠져들곤 합니다.",
+        "FPS와 인디게임을 좋아해요. 특히 스토리가 좋은 게임에 빠져들곤 합니다.",
       color: "text-blue-500",
       bgColor: "bg-blue-500/10",
     },

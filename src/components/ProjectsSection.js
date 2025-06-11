@@ -1,16 +1,16 @@
 import { useState } from "react";
 import {
   Github,
-  ExternalLink,
   Heart,
   Zap,
   Sparkles,
   Coffee,
+  GalleryVertical,
 } from "lucide-react";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 import Badge from "./ui/Badge";
-
+import LifeTrakerThumnail from "../thumnails/LifeTrakerThumnail.png"; // Adjust the import path as necessary
 function ProjectsSection() {
   const [hoveredProject, setHoveredProject] = useState(null);
 
@@ -19,9 +19,10 @@ function ProjectsSection() {
       title: "CHART.JS 기반 투두 리스트 앱",
       description:
         "LifeTracker는 사용자가 매일 할 일과 감정을 기록하고, 이를 통해 성장하는 모습을 추적할 수 있는 애플리케이션입니다. 할 일 관리, 감정 트래킹, 목표 성취율 분석 등을 한 번에 처리할 수 있습니다.",
-      image: "https://via.placeholder.com/300x200",
-      technologies: ["React", "Chart", "MySQL", "Node", "Toastify"],
+      image: LifeTrakerThumnail,
+      technologies: ["React", "Chart", "MySQL", "Node", "JWT", "Toastify"],
       github: "https://github.com/sharknell/LifeCheck",
+      ppt: "https://docs.google.com/presentation/d/18fY0Gc9YaZbUXK8AxPuI0bmu-7HuuAa1dlIK1rY6FCM/edit?usp=sharing",
       demo: "#",
       type: "Web 앱 프로젝트",
       mood: "📝 편안한",
@@ -36,6 +37,8 @@ function ProjectsSection() {
       image: "https://via.placeholder.com/300x200",
       technologies: ["React", "JavaScript", "TossPayment-SDK", "Node"],
       github: "#",
+      ppt: "",
+
       type: "일상 도구",
       mood: "🛒 고민중",
       status: "완료",
@@ -43,15 +46,17 @@ function ProjectsSection() {
       icon: Coffee,
     },
     {
-      title: "랜덤 메뉴 추천기",
+      title: "카카오 API 를 활용한 도서대여 서비스",
       description:
         "점심 메뉴 고민을 해결해주는 재미있는 앱입니다. 룰렛 형태로 메뉴를 추천하고, 친구들과 함께 투표할 수도 있어요.",
       image: "https://via.placeholder.com/300x200",
-      technologies: ["React", "Framer Motion", "Firebase", "PWA"],
+      technologies: ["React", "Kakao API", "MySQL", "Node", "Toastify"],
+
       github: "#",
+      ppt: "",
       demo: "#",
       type: "재미 프로젝트",
-      mood: "🎲 유쾌한",
+      mood: "📙 유쾌한",
       status: "완료",
       gradient: "from-orange-600 to-red-600",
       icon: Zap,
@@ -61,8 +66,9 @@ function ProjectsSection() {
       description:
         "집중력 향상을 위한 포모도로 기법 타이머입니다. 귀여운 캐릭터가 함께 집중하고, 성취감을 느낄 수 있는 리워드 시스템이 있어요.",
       image: "https://via.placeholder.com/300x200",
-      technologies: ["Vue.js", "Canvas API", "Web Notifications", "PWA"],
+      technologies: ["React", "Kakao API", "MySQL", "Node", "Toastify"],
       github: "https://github.com/sharknell/LifeCheck",
+      ppt: "",
       type: "생산성 도구",
       mood: "⏰ 집중적인",
       status: "진행중",
@@ -184,6 +190,20 @@ function ProjectsSection() {
                         >
                           <Github className="mr-2 h-4 w-4" />
                           GitHub
+                        </Button>
+                      </a>
+                      <a
+                        href={project.ppt}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="hover:bg-primary/10 transition-all duration-200"
+                        >
+                          <GalleryVertical className="mr-2 h-4 w-4" />
+                          PTT
                         </Button>
                       </a>
                     </div>

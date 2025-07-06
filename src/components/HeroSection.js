@@ -11,15 +11,15 @@ function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = useMemo(
-    () => [
+  useEffect(() => {
+    const texts = [
       "재미있는 것을 만드는",
       "아이디어를 실현하는",
       "일상을 편리하게 하는",
       "창의적인",
-    ],
-    []
-  );
+    ];
+    // useEffect 내용
+  }, [currentText, currentIndex, isDeleting]);
 
   useEffect(() => {
     const timeout = setTimeout(

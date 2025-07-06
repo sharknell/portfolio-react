@@ -47,13 +47,6 @@ function HeroSection() {
     return () => clearTimeout(timeout);
   }, [currentText, currentIndex, isDeleting, texts]);
 
-  const scrollToNext = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
       <ThreeBackground />

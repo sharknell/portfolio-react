@@ -4,7 +4,6 @@ import {
   Zap,
   Coffee,
   GalleryVertical,
-  CloudSun,
   Rotate3d,
   Monitor,
 } from "lucide-react";

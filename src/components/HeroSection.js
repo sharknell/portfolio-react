@@ -69,7 +69,7 @@ function HeroSection() {
             <div className="relative inline-block">
               <img
                 src="https://via.placeholder.com/200"
-                alt="Profile"
+                alt=""
                 className="w-48 h-48 rounded-full mx-auto mb-8 object-cover border-4 border-primary/20 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-primary/25 backdrop-blur-sm"
               />
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -128,31 +128,7 @@ function HeroSection() {
             </Button>
           </div>
 
-          <div className="flex justify-center space-x-6 mb-16">
-            {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Mail, href: "#", label: "Email" },
-            ].map(({ icon: Icon, href, label }, index) => (
-              <Button
-                key={label}
-                variant="ghost"
-                size="icon"
-                className="h-12 w-12 hover:bg-primary/10 hover:text-primary transform hover:scale-110 transition-all duration-200 backdrop-blur-sm bg-background/20 border border-primary/10"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <Icon className="h-6 w-6" />
-                <span className="sr-only">{label}</span>
-              </Button>
-            ))}
-          </div>
-
-          <Button
-            variant="ghost"
-            onClick={scrollToNext}
-            className="animate-bounce hover:animate-none transition-all duration-200 backdrop-blur-sm bg-background/20 border border-primary/10"
-          >
-            <ChevronDown className="h-8 w-8" />
-          </Button>
+          <div className="flex justify-center space-x-6 mb-16"></div>
         </div>
       </div>
     </section>

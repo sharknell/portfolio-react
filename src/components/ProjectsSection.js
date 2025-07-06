@@ -1,4 +1,13 @@
-import { Github, Heart, Zap, Coffee, GalleryVertical } from "lucide-react";
+import {
+  Github,
+  Heart,
+  Zap,
+  Coffee,
+  GalleryVertical,
+  CloudSun,
+  Rotate3d,
+  Monitor,
+} from "lucide-react";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 import Badge from "./ui/Badge";
@@ -52,6 +61,34 @@ function ProjectsSection() {
     },
   ];
 
+  const miniProjects = [
+    {
+      title: "(주) 올핀 공식 홈페이지",
+      description:
+        "(주) 올핀의 공식 홈페이지로, 회사 소개와 서비스 정보를 제공합니다.",
+      technologies: ["React", "JSON"],
+      liveLink: "http://allfin.kr/",
+      type: "미니 프로젝트",
+      mood: "🌤 직관적",
+      status: "완료",
+      gradient: "from-gray-500 to-blue-500",
+      icon: Monitor,
+    },
+    {
+      title: "3D Web Viewer",
+      description:
+        "React 와 Three.js 를 사용해 기본적인 3D 모델을 웹에서 볼 수 있는 뷰어입니다.",
+      technologies: ["React", "JavaScript", "Three.js"],
+      type: "미니 프로젝트",
+      mood: "➗ 직관적",
+      status: "완료",
+      gradient: "from-white-500 to-slate-700",
+      icon: Rotate3d,
+      github: "https://github.com/sharknell/3ds_viewer",
+      liveLink: "https://three3d-viewer.netlify.app/",
+    },
+  ];
+
   const getStatusColor = (status) => {
     switch (status) {
       case "완료":
@@ -75,6 +112,7 @@ function ProjectsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
+          {/* 메인 프로젝트 */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
@@ -133,11 +171,9 @@ function ProjectsSection() {
                       {project.title}
                     </h3>
                   </div>
-
                   <p className="text-muted-foreground leading-relaxed mb-4">
                     {project.description}
                   </p>
-
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, techIndex) => (
                       <Badge
@@ -149,7 +185,6 @@ function ProjectsSection() {
                       </Badge>
                     ))}
                   </div>
-
                   <div className="flex gap-2">
                     <a
                       href={project.github}
@@ -159,7 +194,7 @@ function ProjectsSection() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="hover:bg-primary/10 transition-all duration-200"
+                        className="hover:bg-primary/10"
                       >
                         <Github className="mr-2 h-4 w-4" />
                         GitHub
@@ -173,7 +208,7 @@ function ProjectsSection() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="hover:bg-primary/10 transition-all duration-200"
+                        className="hover:bg-primary/10"
                       >
                         <GalleryVertical className="mr-2 h-4 w-4" />
                         PPT
@@ -185,7 +220,113 @@ function ProjectsSection() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* 미니 프로젝트 */}
+          <div className="mt-24">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                  미니 프로젝트
+                </span>
+              </h2>
+              <p className="text-muted-foreground text-base max-w-xl mx-auto">
+                학습을 위해 빠르게 만들어본 소규모 프로젝트들입니다.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {miniProjects.map((project, index) => (
+                <Card
+                  key={index}
+                  className="overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 bg-card/50 backdrop-blur-sm"
+                >
+                  <div
+                    className={`relative aspect-video flex items-center justify-center bg-gradient-to-br ${project.gradient}`}
+                  >
+                    <project.icon className="w-16 h-16 text-white/80 group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-background/80 text-foreground border-0">
+                        {project.type}
+                      </Badge>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <Badge
+                        className={`${getStatusColor(
+                          project.status
+                        )} text-white border-0`}
+                      >
+                        {project.status}
+                      </Badge>
+                    </div>
+                    <div className="absolute bottom-4 left-4">
+                      <Badge
+                        variant="outline"
+                        className="bg-background/80 border-0"
+                      >
+                        {project.mood}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="pb-4">
+                      <h3 className="text-xl group-hover:text-primary transition-colors duration-300 font-semibold flex items-center">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, techIndex) => (
+                        <Badge
+                          key={techIndex}
+                          variant="outline"
+                          className="hover:bg-primary/10 transition-colors duration-200"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="hover:bg-primary/10"
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          GitHub
+                        </Button>
+                      </a>
+                      {project.liveLink && (
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="hover:bg-primary/10"
+                          >
+                            <Zap className="mr-2 h-4 w-4" />
+                            Live
+                          </Button>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* 깃허브 더보기 */}
+          <div className="text-center mt-16">
             <p className="text-muted-foreground mb-4">
               더 많은 프로젝트들이 GitHub에 있어요!
             </p>

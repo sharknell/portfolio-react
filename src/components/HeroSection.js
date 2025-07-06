@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Github, Mail, ChevronDown, Sparkles } from "lucide-react";
 import Button from "./ui/Button";
 import ThreeBackground from "./3d/ThreeBackground";
@@ -11,12 +11,15 @@ function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const texts = [
-    "재미있는 것을 만드는",
-    "아이디어를 실현하는",
-    "일상을 편리하게 하는",
-    "창의적인",
-  ];
+  const texts = useMemo(
+    () => [
+      "재미있는 것을 만드는",
+      "아이디어를 실현하는",
+      "일상을 편리하게 하는",
+      "창의적인",
+    ],
+    []
+  );
 
   useEffect(() => {
     const timeout = setTimeout(

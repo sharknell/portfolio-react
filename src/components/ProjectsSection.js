@@ -1,20 +1,17 @@
-import { useState } from "react";
 import { Github, Heart, Zap, Coffee, GalleryVertical } from "lucide-react";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 import Badge from "./ui/Badge";
-import LifeTrakerThumnail from "../thumnails/LifeTrakerThumnail.png"; // Adjust the import path as necessary
+import LifeTrakerThumnail from "../thumnails/LifeTrakerThumnail.png";
 import TossSDKShoppingThumnail from "../thumnails/TossSDKShoppingThumnail.png";
 import BookRentalThumnail from "../thumnails/BookRentalThumnail.png";
 
 function ProjectsSection() {
-  const [hoveredProject, setHoveredProject] = useState(null);
-
   const projects = [
     {
       title: "CHART.JS 기반 투두 리스트 앱",
       description:
-        "LifeTracker는 사용자가 매일 할 일과 감정을 기록하고, 이를 통해 성장하는 모습을 추적할 수 있는 애플리케이션입니다. 할 일 관리, 감정 트래킹, 목표 성취율 분석 등을 한 번에 처리할 수 있습니다.",
+        "LifeTracker는 사용자가 매일 할 일과 감정을 기록하고, 이를 통해 성장하는 모습을 추적할 수 있는 애플리케이션입니다.",
       image: LifeTrakerThumnail,
       technologies: ["React", "Chart", "MySQL", "Node", "JWT", "Toastify"],
       github: "https://github.com/sharknell/LifeCheck",
@@ -28,7 +25,7 @@ function ProjectsSection() {
     {
       title: "Toss-SDK 쇼핑몰",
       description:
-        "React 와 Node 그리고 MySQL 를 기반으로 결제까지 진행되는 화장품 쇼핑몰입니다",
+        "React 와 Node 그리고 MySQL 를 기반으로 결제까지 진행되는 화장품 쇼핑몰입니다.",
       image: TossSDKShoppingThumnail,
       technologies: ["React", "JavaScript", "TossPayment-SDK", "Node"],
       github: "https://github.com/sharknell/project-one?tab=readme-ov-file",
@@ -42,7 +39,7 @@ function ProjectsSection() {
     {
       title: "카카오 API 를 활용한 도서대여 서비스",
       description:
-        "React 와 Node 그리고 MySQL 와 카카오 API 를 기반으로 진행하는 책 정보 조회와 대여 서비스입니다.",
+        "React, Node, MySQL, 카카오 API를 활용해 책 정보 조회와 대여 서비스를 제공합니다.",
       image: BookRentalThumnail,
       technologies: ["React", "Kakao API", "MySQL", "Node", "Toastify"],
       github: "https://github.com/sharknell/book-tosspay",
@@ -85,7 +82,8 @@ function ProjectsSection() {
               </span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              일상의 불편함을 해결하거나 단순히 재미있어서 만든 프로젝트들입니다
+              일상의 불편함을 해결하거나 단순히 재미있어서 만든
+              프로젝트들입니다.
             </p>
           </div>
 
@@ -94,8 +92,6 @@ function ProjectsSection() {
               <Card
                 key={index}
                 className="overflow-hidden group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 bg-card/50 backdrop-blur-sm"
-                onMouseEnter={() => setHoveredProject(index)}
-                onMouseLeave={() => setHoveredProject(null)}
               >
                 <div className="relative aspect-video overflow-hidden">
                   <div
@@ -138,53 +134,51 @@ function ProjectsSection() {
                     </h3>
                   </div>
 
-                  <div className="space-y-6">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {project.description}
+                  </p>
 
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={techIndex}
-                          variant="outline"
-                          className="hover:bg-primary/10 transition-colors duration-200"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech, techIndex) => (
+                      <Badge
+                        key={techIndex}
+                        variant="outline"
+                        className="hover:bg-primary/10 transition-colors duration-200"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
 
-                    <div className="flex gap-2 pt-2">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                  <div className="flex gap-2">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="hover:bg-primary/10 transition-all duration-200"
                       >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="hover:bg-primary/10 transition-all duration-200"
-                        >
-                          <Github className="mr-2 h-4 w-4" />
-                          GitHub
-                        </Button>
-                      </a>
-                      <a
-                        href={project.ppt}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        <Github className="mr-2 h-4 w-4" />
+                        GitHub
+                      </Button>
+                    </a>
+                    <a
+                      href={project.ppt}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="hover:bg-primary/10 transition-all duration-200"
                       >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="hover:bg-primary/10 transition-all duration-200"
-                        >
-                          <GalleryVertical className="mr-2 h-4 w-4" />
-                          PTT
-                        </Button>
-                      </a>
-                    </div>
+                        <GalleryVertical className="mr-2 h-4 w-4" />
+                        PPT
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </Card>
@@ -197,7 +191,13 @@ function ProjectsSection() {
             </p>
             <Button variant="outline" size="lg" className="hover:bg-primary/10">
               <Github className="mr-2 h-5 w-5" />
-              <a href="https://github.com/sharknell">GitHub에서 더 보기</a>
+              <a
+                href="https://github.com/sharknell"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub에서 더 보기
+              </a>
             </Button>
           </div>
         </div>

@@ -23,7 +23,7 @@ function ProjectsSection() {
       image: LifeTrakerThumnail,
       technologies: ["React", "Chart", "MySQL", "Node", "JWT", "Toastify"],
       github: "https://github.com/sharknell/LifeCheck",
-      ppt: "https://docs.google.com/presentation/d/18fY0Gc9YaZbUXK8AxPuI0bmu-7HuuAa1dlIK1rY6FCM/edit?usp=sharing",
+      ppt: "https://www.canva.com/design/DAGsY4PIq0g/hTgphfNPZvFwdPbg4iA-YA/edit?utm_content=DAGsY4PIq0g&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
       type: "Web 앱 프로젝트",
       mood: "📝 편안한",
       status: "완료",

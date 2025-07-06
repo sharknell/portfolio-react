@@ -108,19 +108,18 @@ function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button
-              size="lg"
-              className="text-lg px-8 bg-gradient-to-r from-primary via-blue-600 to-purple-600 hover:from-primary/90 hover:via-blue-600/90 hover:to-purple-600/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl backdrop-blur-sm"
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              연락하기
-            </Button>
-            <Button
               variant="outline"
               size="lg"
               className="text-lg px-8 hover:bg-primary/10 transform hover:scale-105 transition-all duration-200 border-2 backdrop-blur-sm bg-background/20"
             >
               <Sparkles className="mr-2 h-5 w-5" />
-              프로젝트 보기
+              <a
+                href="https://github.com/sharknell"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                프로젝트 보기
+              </a>
             </Button>
           </div>
 

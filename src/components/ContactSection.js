@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Mail,
   Phone,
@@ -8,12 +6,39 @@ import {
   Send,
   MessageCircle,
   Calendar,
+  CheckCircle,
+  AlertTriangle,
 } from "lucide-react";
+import emailjs from "emailjs-com";
 import Card from "./ui/Card";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Textarea from "./ui/Textarea";
 import Label from "./ui/Label";
+
+function Toast({ type, message, onClose }) {
+  return (
+    <div className="fixed top-6 right-6 z-50">
+      <div
+        className={`flex items-center px-4 py-3 rounded shadow-lg transition-all duration-300 ${
+          type === "success"
+            ? "bg-green-100 text-green-700 border border-green-400"
+            : "bg-red-100 text-red-700 border border-red-400"
+        }`}
+      >
+        {type === "success" ? (
+          <CheckCircle className="w-5 h-5 mr-2 text-green-600" />
+        ) : (
+          <AlertTriangle className="w-5 h-5 mr-2 text-red-600" />
+        )}
+        <p className="text-sm">{message}</p>
+        <button onClick={onClose} className="ml-4 text-xs">
+          ✕
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function ContactSection() {
   const [formData, setFormData] = useState({
@@ -23,26 +48,53 @@ function ContactSection() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState(null);
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
 
-    console.log("Form submitted:", formData);
-    alert(
-      "메시지가 성공적으로 전송되었습니다! 빠른 시일 내에 답변드리겠습니다."
-    );
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
+    emailjs
+      .send(
+        "service_sk5kurf",
+        "template_qj8x8gr",
+        templateParams,
+        "nIyemAWi2_lF3vgOZ"
+      )
+      .then(() => {
+        setToast({
+          type: "success",
+          message: "메시지가 성공적으로 전송되었습니다!",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      })
+      .catch(() => {
+        setToast({
+          type: "error",
+          message: "전송에 실패했습니다. 다시 시도해주세요.",
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const contactMethods = [
@@ -74,10 +126,18 @@ function ContactSection() {
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5"></div>
+      {toast && (
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          onClose={() => setToast(null)}
+        />
+      )}
 
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
+          {/* HEADER */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
@@ -85,11 +145,11 @@ function ContactSection() {
               </span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              새로운 프로젝트나 협업 기회에 대해 이야기해보세요. 함께 멋진 것을
-              만들어봅시다!
+              새로운 프로젝트나 협업 기회에 대해 이야기해보세요.
             </p>
           </div>
 
+          {/* CONTACT CARDS */}
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
             {contactMethods.map((method, index) => (
               <Card
@@ -114,6 +174,7 @@ function ContactSection() {
             ))}
           </div>
 
+          {/* FORM */}
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div>
@@ -122,12 +183,9 @@ function ContactSection() {
                   연락해 주세요!
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  새로운 프로젝트, 협업 제안, 또는 단순한 인사말이라도
-                  환영합니다. 보통 24시간 이내에 답변드리며, 모든 메시지를
-                  소중히 읽어보겠습니다.
+                  새로운 프로젝트, 협업 제안, 또는 인사말이라도 환영합니다.
                 </p>
               </div>
-
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 p-4 bg-muted/50 rounded-lg">
                   <Calendar className="h-5 w-5 text-primary" />
@@ -141,6 +199,7 @@ function ContactSection() {
               </div>
             </div>
 
+            {/* FORM 카드 */}
             <Card className="bg-card/50 backdrop-blur-sm border-0 shadow-xl">
               <div className="p-6">
                 <h3 className="flex items-center font-semibold text-xl mb-6">

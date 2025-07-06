@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Github, Mail, ChevronDown, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import Button from "./ui/Button";
 import ThreeBackground from "./3d/ThreeBackground";
 import FloatingElements from "./3d/FloatingElements";

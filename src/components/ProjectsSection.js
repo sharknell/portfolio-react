@@ -185,20 +185,22 @@ function ProjectsSection() {
                     ))}
                   </div>
                   <div className="flex gap-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover:bg-primary/10"
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <Github className="mr-2 h-4 w-4" />
-                        GitHub
-                      </Button>
-                    </a>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="hover:bg-primary/10"
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          GitHub
+                        </Button>
+                      </a>
+                    )}
                     <a
                       href={project.ppt}
                       target="_blank"
@@ -287,20 +289,22 @@ function ProjectsSection() {
                       ))}
                     </div>
                     <div className="flex gap-2">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="hover:bg-primary/10"
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
-                          <Github className="mr-2 h-4 w-4" />
-                          GitHub
-                        </Button>
-                      </a>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="hover:bg-primary/10"
+                          >
+                            <Github className="mr-2 h-4 w-4" />
+                            GitHub
+                          </Button>
+                        </a>
+                      )}
                       {project.liveLink && (
                         <a
                           href={project.liveLink}

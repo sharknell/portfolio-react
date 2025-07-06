@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect, useMemo } from "react";
 import { Github, Mail, ChevronDown, Sparkles } from "lucide-react";
 import Button from "./ui/Button";
@@ -11,30 +9,34 @@ function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    const texts = [
+  const texts = useMemo(
+    () => [
       "재미있는 것을 만드는",
       "아이디어를 실현하는",
       "일상을 편리하게 하는",
       "창의적인",
-    ];
-    // useEffect 내용
-  }, [currentText, currentIndex, isDeleting]);
+    ],
+    []
+  );
 
   useEffect(() => {
+    const current = texts[currentIndex];
+    const isComplete = !isDeleting && currentText === current;
+    const isEmpty = isDeleting && currentText === "";
+
     const timeout = setTimeout(
       () => {
-        const current = texts[currentIndex];
-
         if (isDeleting) {
-          setCurrentText(current.substring(0, currentText.length - 1));
+          setCurrentText((prev) => prev.slice(0, -1));
         } else {
-          setCurrentText(current.substring(0, currentText.length + 1));
+          setCurrentText((prev) => current.slice(0, prev.length + 1));
         }
 
-        if (!isDeleting && currentText === current) {
+        if (isComplete) {
           setTimeout(() => setIsDeleting(true), 1000);
-        } else if (isDeleting && currentText === "") {
+        }
+
+        if (isEmpty) {
           setIsDeleting(false);
           setCurrentIndex((prev) => (prev + 1) % texts.length);
         }

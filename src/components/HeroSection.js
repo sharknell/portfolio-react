@@ -3,6 +3,7 @@ import { Sparkles } from "lucide-react";
 import Button from "./ui/Button";
 import ThreeBackground from "./3d/ThreeBackground";
 import FloatingElements from "./3d/FloatingElements";
+import ProfileThumbnail from "../thumnails/ProfileThumnail.png";
 
 function HeroSection() {
   const [currentText, setCurrentText] = useState("");
@@ -61,7 +62,7 @@ function HeroSection() {
           <div className="mb-8 group">
             <div className="relative inline-block">
               <img
-                src="https://via.placeholder.com/200"
+                src={ProfileThumbnail}
                 alt=""
                 className="w-48 h-48 rounded-full mx-auto mb-8 object-cover border-4 border-primary/20 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-primary/25 backdrop-blur-sm"
               />
